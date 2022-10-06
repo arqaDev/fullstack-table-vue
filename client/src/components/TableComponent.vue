@@ -1,0 +1,48 @@
+<template>
+    <table class="table">
+        <thead class="table__head">
+            <th scope="col">Дата</th>
+            <th scope="col">Название</th>
+            <th scope="col">Количество</th>
+            <th scope="col">Расстояние</th>
+        </thead>
+        <tbody class="table__body">
+            <row-component v-for="row in rows"
+                :row="row"
+                :key="row.id"
+            />
+        </tbody>
+    </table>
+</template>
+
+<script>
+    import RowComponent from './RowComponent.vue'
+
+    export default {
+        components: {
+            RowComponent
+        },
+        props: {
+            rows: {
+                type: Array,
+            }
+        }
+    }
+</script>
+
+<style lang="css" scoped>
+  .table {
+    width: 100%;
+    margin-top: 30px;
+    padding: 10px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+    background-color: #d2e1e6;
+    border-collapse: collapse;
+    border: 2px solid black;
+  }
+
+  .table__head th {
+    border: 3px solid black;
+    padding: 7px 0;
+  }
+</style>
