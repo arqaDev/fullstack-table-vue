@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.4",
     "@vue/cli-service": "^5.0.8",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
