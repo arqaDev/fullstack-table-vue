@@ -4,7 +4,7 @@
     @create="addRow"
     v-model:show="isShowen"
   />
-  <div style="display: flex; justify-content: space-between; align-items: center;">
+  <div class="head">
     <custom-button @click="showModal">Add Row</custom-button>
     <search-and-sort
       v-model:searchValue="searchTerm"
@@ -12,7 +12,10 @@
       @update:modelValue="setSelectedSort"
     />
   </div>
-  <table-component
+  <h1 v-if="isLoading" class="loading">
+    Loading...
+  </h1>
+  <table-component v-else
     :rows="rows"
   /> 
   <pagination-component
@@ -41,6 +44,7 @@
       return {
         rows: [],
         isShowen: false,
+        isLoading: false,
         selectedSort: '',
         searchTerm: '',
         currentPage: 1,
@@ -66,12 +70,14 @@
             baseURL: process.env.VUE_APP_API_URL
         })
 
+        this.isLoading = true
         // get data from SQL and render to the page
         const {data} = await $host.get('api/table')
         this.rows = this.sortedAndSearchedTodos(data).slice(this.start, this.end)
 
         // change count of pages
         this.totalPages = Math.ceil(data.length / this.limit)
+        this.isLoading = false
       },
 
       // sort data
@@ -81,8 +87,8 @@
         } else if (this.selectedSort) {
 
           // if quantity or distance the same, then sort will be done by title
-          return [...rows].sort((row1, row2) => row1[this.selectedSort] === row2[this.selectedSort] 
-            ? row1['title'].localeCompare(row2['title'])
+          return [...rows].sort((row1, row2) => row1[this.selectedSort] === row2[this.selectedSort] ?
+            row1['title'].localeCompare(row2['title'])
             : row1[this.selectedSort] - row2[this.selectedSort])
         } else {
           return rows.reverse()
@@ -135,5 +141,19 @@
   body {
     padding: 5% 10%;
     background: #f5f5f5;
+  }
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .loading {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
   }
 </style>

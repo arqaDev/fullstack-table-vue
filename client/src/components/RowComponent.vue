@@ -1,9 +1,9 @@
 <template>
-    <tr>
-        <td>{{ row.date }}</td>
-        <td>{{ row.title }}</td>
-        <td>{{ row.quantity }}</td>
-        <td>{{ row.distance }}</td>
+    <tr class="table__body__row">
+        <td class="table__body__col">{{ row.date }}</td>
+        <td class="table__body__col">{{ row.title }}</td>
+        <td class="table__body__col">{{ row.quantity }}</td>
+        <td class="table__body__col">{{ row.distance }}</td>
     </tr>
 </template>
 
@@ -18,24 +18,24 @@
 </script>
 
 <style lang="css" scoped>
-    .table__body tr {
+    .table__body__row {
         background-color: #fff;
     }
 
-    .table__body td{
+    .table__body__col{
         text-align: center;
         border: 1px solid black;
         padding: 10px;
     }
 
-    .table__body td:nth-child(1),
-    .table__body td:nth-child(3),
-    .table__body td:nth-child(4)
+    .table__body__col:nth-child(1),
+    .table__body__col:nth-child(3),
+    .table__body__col:nth-child(4)
     {
         width: 12%;
     }
 
-    .table__body td:nth-child(2) {
+    .table__body__col:nth-child(2) {
         text-align: left;
     }
 </style>

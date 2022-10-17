@@ -1,10 +1,10 @@
 <template>
     <table class="table">
         <thead class="table__head">
-            <th scope="col">Дата</th>
-            <th scope="col">Название</th>
-            <th scope="col">Количество</th>
-            <th scope="col">Расстояние</th>
+            <th class="table__head__col">Дата</th>
+            <th class="table__head__col">Название</th>
+            <th class="table__head__col">Количество</th>
+            <th class="table__head__col">Расстояние</th>
         </thead>
         <tbody class="table__body">
             <row-component v-for="row in rows"
@@ -41,7 +41,7 @@
     border: 2px solid black;
   }
 
-  .table__head th {
+  .table__head__col {
     border: 3px solid black;
     padding: 7px 0;
   }

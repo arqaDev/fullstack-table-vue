@@ -1,7 +1,7 @@
 <template>
-    <div class="page__wrapper">
+    <div class="pagination__wrapper">
         <ul v-for="pageNumber in pages" :key="pageNumber" @click="changePage(pageNumber)">
-            <li class="pages" :class="{'current-page': page === pageNumber}">
+            <li class="pagination__pages" :class="{'pagination__current-page': page === pageNumber}">
                 {{ pageNumber }}
             </li>
         </ul>
@@ -29,12 +29,12 @@
 </script>
 
 <style lang="css" scoped>
-    .page__wrapper {
+    .pagination__wrapper {
         display: flex;
         margin-top: 60px;
     }
 
-    .pages {
+    .pagination__pages {
         margin: 2px;
         height: 44px;
         width: 40px;
@@ -48,7 +48,7 @@
     }
 
 
-    .current-page, .pages:hover {
+    .pagination__current-page, .pagination__pages:hover {
         background-color: #4469d8;
         color: #fff;
     }
