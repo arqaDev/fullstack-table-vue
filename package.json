@@ -18,5 +18,9 @@
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.24.0"
+  },
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
   }
 }
